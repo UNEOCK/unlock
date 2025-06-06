@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>コンテンツ一覧 - 謎解きサークル UNL:OCK</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body class="bg-black text-slate-300">
+
+    <header class="fixed top-0 left-0 right-0 z-50 glassmorphism">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="../index.html" class="block">
+                <img src="../logo.png" alt="UNL:OCK ロゴ" class="header-logo"> 
+            </a>
+            <nav class="hidden md:flex space-x-6 items-center">
+                <a href="../index.html#about" class="transition-colors">サークルについて</a>
+                <a href="../index.html#activities" class="transition-colors">コンテンツ</a>
+                <a href="../news/" class="transition-colors">お知らせ</a>
+                <a href="../index.html#sns" class="transition-colors">各SNS</a>
+                <a href="../index.html#join" class="bg-button-brand hover:bg-button-brand-dark text-button-text font-semibold px-4 py-2 rounded-lg btn-custom">参加する</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-slate-300 hover:text-secondary-brand focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 bg-opacity-95">
+            <a href="../index.html#about" class="block px-6 py-3 transition-colors">サークルについて</a>
+            <a href="./index.html" class="block px-6 py-3 transition-colors text-secondary-brand">コンテンツ一覧</a> 
+            <a href="../news/" class="block px-6 py-3 transition-colors">お知らせ</a>
+            <a href="../index.html#sns" class="block px-6 py-3 transition-colors">各SNS</a>
+            <a href="../index.html#join" class="block px-6 py-3 bg-button-brand hover:bg-button-brand-dark text-button-text font-semibold text-center">参加する</a>
+        </div>
+    </header>
+
+    <main class="pt-24 md:pt-32 pb-16 bg-black">
+        <section id="contents-list" class="py-16 md:py-20">
+            <div class="container mx-auto px-6">
+                <h1 class="text-4xl md:text-5xl font-bold text-center mb-16 text-main-brand-brighter section-title-underlined">コンテンツ一覧</h1>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- コンテンツカード1: SNS告知謎 -->
+                    <a href="./001kokuchinazo.html" class="bg-slate-900 p-6 rounded-lg shadow-lg hover:shadow-accent-brand/30 transition-shadow duration-300 flex flex-col no-underline">
+                        <div class="thumbnail-container mb-4">
+                            {/* ルートディレクトリからの相対パスで画像を指定 */}
+                            <img src="../kokuchinazo.png" alt="SNS告知謎のサムネイル" class="thumbnail-image" onerror="this.onerror=null;this.src='https://placehold.co/300x424/1e293b/a0aec0?text=SNS告知謎';">
+                        </div>
+                        <h3 class="text-2xl font-semibold text-secondary-brand mb-3">SNS告知謎</h3>
+                        <p class="text-slate-400 flex-grow">XやInstagramで投稿した告知謎についてまとめています。ヒントもこちらから。</p>
+                    </a>
+
+                    <!-- コンテンツカード2: ポスター謎 -->
+                    <a href="./002posternazo.html" class="bg-slate-900 p-6 rounded-lg shadow-lg hover:shadow-accent-brand/30 transition-shadow duration-300 flex flex-col no-underline">
+                        <div class="thumbnail-container mb-4">
+                            <img src="../posternazo.png" alt="ポスター謎のサムネイル" class="thumbnail-image" onerror="this.onerror=null;this.src='https://placehold.co/300x424/1e293b/a0aec0?text=ポスター謎';">
+                        </div>
+                        <h3 class="text-2xl font-semibold text-secondary-brand mb-3">ポスター謎</h3>
+                        <p class="text-slate-400 flex-grow">学内各所に貼られたポスター、なにか違和感が...？全てのポスターはこちらから見ることができます。</p>
+                    </a>
+
+                    <!-- コンテンツカード3: 調布祭企画 -->
+                    <a href="./003chohusai.html" class="bg-slate-900 p-6 rounded-lg shadow-lg hover:shadow-accent-brand/30 transition-shadow duration-300 flex flex-col no-underline">
+                        <div class="thumbnail-container mb-4">
+                            <img src="../chohusai2025.png" alt="調布祭企画のサムネイル" class="thumbnail-image" onerror="this.onerror=null;this.src='https://placehold.co/300x424/1e293b/a0aec0?text=調布祭企画';">
+                        </div>
+                        <h3 class="text-2xl font-semibold text-secondary-brand mb-3">調布祭企画</h3>
+                        <p class="text-slate-400 flex-grow">今年の調布祭では、電通大準公認クイズサークルQuecAとコラボして企画を行います！</p>
+                    </a>
+
+                    <!-- コンテンツカード4: 追加コンテンツ (プレースホルダー) -->
+                    <a href="#" class="bg-slate-900 p-6 rounded-lg shadow-lg hover:shadow-accent-brand/30 transition-shadow duration-300 flex flex-col no-underline">
+                        <div class="thumbnail-container mb-4">
+                            <img src="https://placehold.co/300x424/1e293b/a0aec0?text=コンテンツ4" alt="コンテンツ4のサムネイル" class="thumbnail-image">
+                        </div>
+                        <h3 class="text-2xl font-semibold text-secondary-brand mb-3">追加コンテンツ</h3>
+                        <p class="text-slate-400 flex-grow">これはプレースホルダーのカードです。必要に応じて内容を更新してください。</p>
+                    </a>
+
+                    <!-- コンテンツカード5: さらなるコンテンツ (プレースホルダー) -->
+                    <a href="#" class="bg-slate-900 p-6 rounded-lg shadow-lg hover:shadow-accent-brand/30 transition-shadow duration-300 flex flex-col no-underline">
+                        <div class="thumbnail-container mb-4">
+                            <img src="https://placehold.co/300x424/1e293b/a0aec0?text=コンテンツ5" alt="コンテンツ5のサムネイル" class="thumbnail-image">
+                        </div>
+                        <h3 class="text-2xl font-semibold text-secondary-brand mb-3">さらなるコンテンツ</h3>
+                        <p class="text-slate-400 flex-grow">これもプレースホルダーです。コンテンツが増えたらここに追加できます。</p>
+                    </a>
+                     <!-- コンテンツカード6: (プレースホルダー) -->
+                </div>
+                <!-- 必要に応じてページネーションなどをここに追加 -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-black pt-8 pb-8 text-center">
+        <hr class="border-t-1 border-blue-600 mb-8 w-full max-w-screen-xl mx-auto">
+        <div class="container mx-auto px-6">
+            <p class="text-slate-400">&copy; 2025 謎解きサークル UNL:OCK. All Rights Reserved.</p>
+            <p class="text-sm text-slate-500 mt-2">
+                このサイトは架空のサークルのものです。
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // モバイルメニューのトグル
+        (function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+        })();
+    </script>
+
+</body>
+</html>

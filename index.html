@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>謎解きサークル UNL:OCK</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-black text-slate-300">
+
+    <header class="fixed top-0 left-0 right-0 z-50 glassmorphism">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="./index.html" class="block">
+                <img src="./logo.png" alt="UNL:OCK ロゴ" class="header-logo">
+            </a>
+            <nav class="hidden md:flex space-x-6 items-center">
+                <a href="#about" class="transition-colors">サークルについて</a>
+                <a href="#activities" class="transition-colors">コンテンツ</a>
+                <a href="#news" class="transition-colors">お知らせ</a>
+                <a href="#sns" class="transition-colors">各SNS</a>
+                <a href="#join" class="bg-button-brand hover:bg-button-brand-dark text-button-text font-semibold px-4 py-2 rounded-lg btn-custom">参加する</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-slate-300 hover:text-secondary-brand focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 bg-opacity-95">
+            <a href="#about" class="block px-6 py-3 transition-colors">サークルについて</a>
+            <a href="#activities" class="block px-6 py-3 transition-colors">コンテンツ</a> {/* This could also link to ./contents/ */}
+            <a href="./news/" class="block px-6 py-3 transition-colors">お知らせ</a>
+            <a href="#sns" class="block px-6 py-3 transition-colors">各SNS</a>
+            <a href="#join" class="block px-6 py-3 bg-button-brand hover:bg-button-brand-dark text-button-text font-semibold text-center">参加する</a>
+        </div>
+    </header>
+
+    <section class="hero-bg min-h-screen flex items-center justify-center pt-16">
+        <div class="text-center p-8 rounded-lg glassmorphism max-w-5xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 text-shadow text-secondary-brand">
+                UEC謎解きサークル、始動。
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 text-slate-200 text-shadow">
+                謎解きサークル「UNL:OCK」＜アンロック＞へようこそ！<br>私たちは、謎解きに関する情報共有と謎解き制作をメインとしたインカレサークルです。
+            </p>
+            <a href="#about" class="bg-button-brand hover:bg-button-brand-dark text-button-text font-bold py-3 px-8 rounded-lg text-lg btn-custom">
+                もっと詳しく知る
+            </a>
+        </div>
+    </section>
+    <hr class="section-divider">
+
+    <section id="about" class="py-16 md:py-20 bg-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-main-brand-brighter section-title-underlined">UNL:OCKとは？</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="https://placehold.co/600x400/000000/3b82f6?text=aaaaa" alt="[チームで謎解き中のイメージ]" class="rounded-lg shadow-xl w-full h-auto object-cover">
+                </div>
+                <div class="text-lg text-slate-300 space-y-4">
+                    <p class="text-accent-brand">UNL:OCKは、電通大でメインに活動するインカレ謎解きサークルです。</p>
+                    <p>小さな謎かけから謎解き公演制作まで、謎解きに関わるものならなんでも取り扱います！！</p>
+                    <p>「謎解き公演に興味があるけれど参加するハードルが高い...」という方の入会も大歓迎！！</p>
+                    <p>UNL:OCKについて、詳しくは<a href="./news/001aboutunlock.html" class="text-secondary-brand hover:text-main-brand-dark font-semibold">こちら</a>まで！</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr class="section-divider">
+
+    <section id="activities" class="py-16 md:py-20 bg-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-main-brand-brighter section-title-underlined">コンテンツ情報</h2>
+            <div class="horizontal-scroll-container">
+                <a href="./contents/001kokuchinazo.html" class="scroll-card bg-slate-900 p-6 rounded-lg shadow-lg hover:shadow-accent-brand/30 transition-shadow duration-300 flex flex-col no-underline">
+                    <div class="thumbnail-container mb-4">
+                        <img src="./kokuchinazo.png" alt="SNS告知謎のサムネイル" class="thumbnail-image" onerror="this.onerror=null;this.src='https://placehold.co/300x424/1e293b/a0aec0?text=SNS告知謎';">
+                    </div>
+                    <h3 class="text-2xl font-semibold text-secondary-brand mb-3">SNS告知謎</h3>
+                    <p class="text-slate-400 flex-grow">XやInstagramで投稿した告知謎についてまとめています。ヒントもこちらから。</p>
+                </a>
+                <a href="./contents/002posternazo.html" class="scroll-card bg-slate-900 p-6 rounded-lg shadow-lg hover:shadow-accent-brand/30 transition-shadow duration-300 flex flex-col no-underline">
+                    <div class="thumbnail-container mb-4">
+                        <img src="./posternazo.png" alt="ポスター謎のサムネイル" class="thumbnail-image" onerror="this.onerror=null;this.src='https://placehold.co/300x424/1e293b/a0aec0?text=ポスター謎';">
+                    </div>
+                    <h3 class="text-2xl font-semibold text-secondary-brand mb-3">ポスター謎</h3>
+                    <p class="text-slate-400 flex-grow">学内各所に貼られたポスター、なにか違和感が...？全てのポスターはこちらから見ることができます。</p>
+                </a>
+                <a href="./contents/003chohusai.html" class="scroll-card bg-slate-900 p-6 rounded-lg shadow-lg hover:shadow-accent-brand/30 transition-shadow duration-300 flex flex-col no-underline">
+                    <div class="thumbnail-container mb-4">
+                        <img src="./chohusai2025.png" alt="調布祭企画のサムネイル" class="thumbnail-image" onerror="this.onerror=null;this.src='https://placehold.co/300x424/1e293b/a0aec0?text=調布祭企画';">
+                    </div>
+                    <h3 class="text-2xl font-semibold text-secondary-brand mb-3">調布祭企画</h3>
+                    <p class="text-slate-400 flex-grow">今年の調布祭では、電通大準公認クイズサークルQuecAとコラボして企画を行います！</p>
+                </a>
+                 <a href="#" class="scroll-card bg-slate-900 p-6 rounded-lg shadow-lg hover:shadow-accent-brand/30 transition-shadow duration-300 flex flex-col no-underline">
+                    <div class="thumbnail-container mb-4">
+                        <img src="https://placehold.co/300x424/1e293b/a0aec0?text=コンテンツ4" alt="コンテンツ4のサムネイル" class="thumbnail-image">
+                    </div>
+                    <h3 class="text-2xl font-semibold text-secondary-brand mb-3">追加コンテンツ</h3>
+                    <p class="text-slate-400 flex-grow">これは横スクロールテスト用の追加カードです。</p>
+                </a>
+                 <a href="#" class="scroll-card bg-slate-900 p-6 rounded-lg shadow-lg hover:shadow-accent-brand/30 transition-shadow duration-300 flex flex-col no-underline">
+                    <div class="thumbnail-container mb-4">
+                        <img src="https://placehold.co/300x424/1e293b/a0aec0?text=コンテンツ5" alt="コンテンツ5のサムネイル" class="thumbnail-image">
+                    </div>
+                    <h3 class="text-2xl font-semibold text-secondary-brand mb-3">さらなるコンテンツ</h3>
+                    <p class="text-slate-400 flex-grow">スクロールの動作を確認するためのカードです。</p>
+                </a>
+            </div>
+            <div class="text-center mt-12">
+                <a href="./contents/index.html" class="text-secondary-brand hover:text-main-brand-dark font-semibold text-lg">すべてのコンテンツを見る &rarr;</a>
+            </div>
+        </div>
+    </section>
+    <hr class="section-divider">
+
+    <section id="news" class="py-16 md:py-20 bg-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-main-brand-brighter section-title-underlined">お知らせ</h2>
+            <div class="max-w-2xl mx-auto">
+                <div class="bg-slate-900 p-6 rounded-lg shadow-md mb-6">
+                     <a href="./news/002recruitment.html" class="block hover:bg-slate-800 transition-colors p-0 rounded-lg">
+                        <h3 class="text-xl font-semibold text-accent-brand mb-2">メンバー募集について</h3>
+                        <p class="text-sm text-slate-500 mb-2">2025年6月15日</p>
+                        <p class="text-slate-300">あなたのスキルが活かせる！メンバー募集についてはこちらにまとめています。</p>
+                    </a>
+                </div>
+                <div class="bg-slate-900 p-6 rounded-lg shadow-md mb-6">
+                    <a href="./news/001aboutunlock.html" class="block hover:bg-slate-800 transition-colors p-0 rounded-lg">
+                        <h3 class="text-xl font-semibold text-accent-brand mb-2">UNL:OCK設立について</h3>
+                        <p class="text-sm text-slate-500 mb-2">2025年6月1日</p>
+                        <p class="text-slate-300">UNL:OCKの設立に際して、このサークルについてまとめています。</p>
+                    </a>
+                </div>
+                <div class="text-center mt-8">
+                    <a href="./news/index.html" class="text-secondary-brand hover:text-main-brand-dark font-semibold text-lg">もっと見る &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr class="section-divider">
+
+    <section id="sns" class="py-16 md:py-20 bg-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-main-brand-brighter section-title-underlined">各SNS</h2>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-8">
+                <a href="https://twitter.com/your_twitter_handle" target="_blank" rel="noopener noreferrer" class="bg-slate-900 p-6 rounded-lg shadow-lg hover:shadow-accent-brand/30 transition-shadow duration-300 w-full sm:w-auto flex flex-col items-center text-center">
+                    <img src="./x.png" alt="X (旧Twitter) アイコン" class="sns-icon" onerror="this.onerror=null;this.src='https://placehold.co/64x64/1e293b/a0aec0?text=X';">
+                    <h3 class="text-2xl font-semibold text-secondary-brand mb-2">X (Twitter)</h3>
+                    <p class="text-slate-400">最新情報や告知謎を発信中！</p>
+                </a>
+                <a href="https://instagram.com/your_instagram_handle" target="_blank" rel="noopener noreferrer" class="bg-slate-900 p-6 rounded-lg shadow-lg hover:shadow-accent-brand/30 transition-shadow duration-300 w-full sm:w-auto flex flex-col items-center text-center">
+                    <img src="./insta.png" alt="Instagram アイコン" class="sns-icon" onerror="this.onerror=null;this.src='https://placehold.co/64x64/1e293b/a0aec0?text=Insta';">
+                    <h3 class="text-2xl font-semibold text-secondary-brand mb-2">Instagram</h3>
+                    <p class="text-slate-400">活動の様子や謎のヒントも！</p>
+                </a>
+            </div>
+        </div>
+    </section>
+    <hr class="section-divider">
+
+    <section id="join" class="py-16 md:py-20 bg-black">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-main-brand-brighter">UNL:OCKに参加しよう！</h2>
+            <p class="text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
+                謎解きが好き、新しいことに挑戦したい、面白い仲間と出会いたい…<br>
+                そんなあなたをUNL:OCKは待っています！少しでも興味を持ったら、お気軽にご連絡ください。
+            </p>
+            <a href="mailto:info@unlock-example.com" class="bg-button-brand hover:bg-button-brand-dark text-button-text-dark_bg font-bold py-4 px-10 rounded-lg text-xl btn-custom">
+                お問い合わせはこちら
+            </a>
+            <p class="mt-6 text-slate-400">（メールアドレス: info@unlock-example.com）</p>
+        </div>
+    </section>
+
+    <footer class="bg-black pt-8 pb-8 text-center">
+        <hr class="border-t-1 border-blue-600 mb-8 w-full max-w-screen-xl mx-auto">
+        <div class="container mx-auto px-6">
+            <p class="text-slate-400">&copy; 2025 謎解きサークル UNL:OCK. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+    (function() { // IIFE Start
+        // モバイルメニューのトグル
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        // Check if elements exist before adding event listener
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // スムーズスクロール (for in-page links) and page jumps
+        document.querySelectorAll('a[href^="#"], a[href^="./news/"], a[href^="./contents/"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith("#")) { // In-page link
+                    e.preventDefault();
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                    const targetElement = document.querySelector(href);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                } else { // External or directory link
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    })(); // IIFE End
+    </script>
+
+</body>
+</html>

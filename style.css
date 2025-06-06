@@ -1,0 +1,163 @@
+/* style.css */
+body {
+    font-family: 'Noto Serif JP', serif;
+    background-color: #000000; /* 背景を黒に統一 */
+    color: #a0aec0; /* 基本の文字色 */
+}
+.hero-bg {
+    background-image: url('https://placehold.co/1200x600/000000/3b82f6?text=UNLOCK'); /* 仮の背景画像 (黒背景に青アクセント) */
+    background-size: cover;
+    background-position: center;
+}
+.glassmorphism {
+    background: rgba(17, 24, 39, 0.5); /* 黒に近いガラス効果 */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(55, 65, 81, 0.3); /* 濃いグレーのボーダー */
+}
+.btn-custom {
+    transition: all 0.3s ease;
+}
+.btn-custom:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+.text-shadow {
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+/* メインカラー: 水色・青系 */
+.text-main-brand { color: #3b82f6; } /* 青 (例: text-blue-500) */
+.text-main-brand-brighter { color: #60a5fa; } /* 少し明るい青 (例: text-blue-400) */
+.text-secondary-brand { color: #0ea5e9; } /* 水色 (例: text-sky-500) */
+.hover\:text-main-brand-dark:hover { color: #2563eb; } /* ホバー時の濃い青 */
+.hover\:text-secondary-brand-dark:hover { color: #0284c7; } /* ホバー時の濃い水色 */
+
+/* ボタンカラー: 水色系 */
+.bg-button-brand { background-color: #0ea5e9; } /* 水色 (例: bg-sky-500) */
+.hover\:bg-button-brand-dark:hover { background-color: #0284c7; } /* ホバー時の濃い水色 */
+.text-button-text { color: #ffffff; } /* ボタンの文字は白 */
+.text-button-text-dark_bg { color: #0f172a; } /*濃い背景のボタンの文字は濃いグレー*/
+
+
+/* アクセントカラー: 黄色 */
+.text-accent-brand { color: #facc15; } /* 黄色 (例: text-yellow-400) */
+.hover\:text-accent-brand-dark:hover { color: #eab308; } /* ホバー時の濃い黄色 */
+.shadow-accent-brand\/30:hover { box-shadow: 0 0 15px rgba(250, 204, 21, 0.3); }
+
+/* ヘッダーのリンク色 */
+header nav a, header #mobile-menu a {
+    color: #94a3b8; /* slate-400 */
+}
+header nav a:hover, header #mobile-menu a:hover {
+    color: #0ea5e9; /* 水色 */
+}
+header #mobile-menu a.bg-button-brand {
+     color: #ffffff; /* ボタン内の文字色 (白) */
+}
+
+/* 区切り線 */
+.section-divider {
+    border-top: 1px solid #2563eb; /* 青色の細い線 (例: border-blue-600) */
+    margin-top: 3rem; /* 上マージン */
+    margin-bottom: 3rem; /* 下マージン */
+}
+/* 最初のセクションの上には線を表示しない */
+section:first-of-type > .section-divider-top {
+    display: none;
+}
+ /* フッターの前の区切り線は少しマージンを調整 */
+footer ~ .section-divider {
+    margin-bottom: 1.5rem;
+}
+/* ロゴ画像の高さ調整用 */
+.header-logo {
+    height: 2.5rem; /* 40px Tailwindのh-10相当。実際のロゴに合わせて調整してください */
+}
+
+/* サムネイル画像用スタイル */
+.thumbnail-container {
+    position: relative;
+    width: 100%;
+    padding-top: 141.4%; /* アスペクト比 1:1.414 (高さ/幅 * 100%) */
+    overflow: hidden;
+    border-radius: 0.375rem; /* Tailwindのrounded-md相当 */
+    background-color: #1e293b; /* 画像読み込み中の背景色 (slate-800) */
+}
+
+.thumbnail-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 画像がコンテナをカバーするように調整 */
+}
+
+/* セクションタイトルの下線 */
+.section-title-underlined {
+    position: relative;
+    padding-bottom: 0.5rem; /* テキストと下線の間のスペース (Tailwindのpb-2相当) */
+}
+
+.section-title-underlined::after {
+    content: '';
+    position: absolute;
+    left: 50%; /* 中央から開始 */
+    transform: translateX(-50%); /* 中央揃え */
+    bottom: 0; /* テキストの直下に配置 */
+    width: 25%; /* 下線の幅をテキストの25%に設定 (短くしました) */
+    height: 3px; /* 下線の太さ */
+    background-color: #facc15; /* 黄色 (text-accent-brand と同じ色) */
+    border-radius: 1.5px; /* 下線の角を少し丸める */
+}
+
+/* 横スクロールコンテナ */
+.horizontal-scroll-container {
+    display: flex;
+    overflow-x: auto; /* 横スクロールを許可 */
+    padding-bottom: 1rem; /* スクロールバーのためのスペース */
+    gap: 1.5rem; /* カード間のスペース (Tailwindのgap-6相当) */
+    -webkit-overflow-scrolling: touch; /* iOSでのスムーズなスクロール */
+    scrollbar-width: thin; /* Firefoxでのスクロールバーの太さ */
+    scrollbar-color: #3b82f6 #1e293b; /* スクロールバーの色 (thumb track) */
+}
+
+/* 横スクロールコンテナのスクロールバー (Chrome, Edge, Safari) */
+.horizontal-scroll-container::-webkit-scrollbar {
+    height: 8px; /* スクロールバーの高さ */
+}
+.horizontal-scroll-container::-webkit-scrollbar-track {
+    background: #1e293b; /* スクロールバーのトラックの色 (slate-800) */
+    border-radius: 4px;
+}
+.horizontal-scroll-container::-webkit-scrollbar-thumb {
+    background-color: #3b82f6; /* スクロールバーのつまみの色 (blue-500) */
+    border-radius: 4px;
+    border: 2px solid #1e293b; /* つまみの周りのパディングのような効果 */
+}
+
+/* 横スクロール内の各カード */
+.scroll-card {
+    flex: 0 0 auto; /* カードが縮まないように */
+    width: calc((100% - 3.75rem) / 3.2);
+}
+
+@media (max-width: 768px) { /* タブレットサイズ */
+    .scroll-card {
+        width: calc((100% - 2.25rem) / 2.2);
+    }
+}
+@media (max-width: 480px) { /* スマートフォンサイズ */
+    .scroll-card {
+        width: 70%;
+    }
+}
+
+/* SNSアイコン画像用スタイル */
+.sns-icon {
+    width: 4rem; /* 64px (Tailwindのw-16相当) */
+    height: 4rem; /* 64px (Tailwindのh-16相当) */
+    margin-bottom: 1rem; /* Tailwindのmb-4相当 */
+    object-fit: contain; /* アスペクト比を保ちつつ、コンテナ内に収まるように */
+}

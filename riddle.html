@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>謎解きチャレンジ - 謎解きサークル UNL:OCK</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> 
+    <style>
+        /* このページ専用の追加スタイル（必要であれば） */
+        #riddleDisplay img {
+            max-width: 100%;
+            max-height: 400px; /* 画像の最大高さを適宜調整 */
+            height: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 0.375rem; /* rounded-md */
+        }
+        /* 結果表示エリアのスタイル */
+        #result.correct {
+            background-color: #10B981; /* emerald-500 (例) */
+            color: #ffffff;
+            border: 1px solid #059669; /* emerald-600 */
+        }
+        #result.incorrect {
+            background-color: #EF4444; /* red-500 (例) */
+            color: #ffffff;
+            border: 1px solid #DC2626; /* red-600 */
+        }
+        #result.error {
+            background-color: #F59E0B; /* amber-500 (例) */
+            color: #0f172a; /* 濃いテキスト色 */
+            border: 1px solid #D97706; /* amber-600 */
+        }
+        #result.loading {
+            color: #94a3b8; /* slate-400 */
+            background-color: transparent;
+            border: none;
+        }
+    </style>
+</head>
+<body class="bg-black text-slate-300">
+
+    <header class="fixed top-0 left-0 right-0 z-50 glassmorphism">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="./index.html" class="block">
+                <img src="./logo.png" alt="UNL:OCK ロゴ" class="header-logo">
+            </a>
+            <nav class="hidden md:flex space-x-6 items-center">
+                <a href="./index.html#about" class="transition-colors">サークルについて</a>
+                <a href="./index.html#activities" class="transition-colors">コンテンツ</a>
+                <a href="./news/" class="transition-colors">お知らせ</a>
+                <a href="./index.html#sns" class="transition-colors">各SNS</a>
+                <a href="./index.html#join" class="bg-button-brand hover:bg-button-brand-dark text-button-text font-semibold px-4 py-2 rounded-lg btn-custom">参加する</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-slate-300 hover:text-secondary-brand focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 bg-opacity-95">
+            <a href="./index.html#about" class="block px-6 py-3 transition-colors">サークルについて</a>
+            <a href="./index.html#activities" class="block px-6 py-3 transition-colors">コンテンツ</a>
+            <a href="./news/" class="block px-6 py-3 transition-colors">お知らせ</a>
+            <a href="./index.html#sns" class="block px-6 py-3 transition-colors">各SNS</a>
+            <a href="./index.html#join" class="block px-6 py-3 bg-button-brand hover:bg-button-brand-dark text-button-text font-semibold text-center">参加する</a>
+        </div>
+    </header>
+
+    <main class="pt-24 pb-16 md:pt-32 md:pb-20"> 
+        <section id="riddle-challenge" class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-main-brand-brighter section-title-underlined">まいにち謎解き解答</h2>
+
+            <div class="max-w-2xl mx-auto bg-slate-900 p-6 sm:p-8 rounded-lg shadow-xl border border-slate-700">
+                <div>
+                    <label for="riddleSelector" class="block mb-2 text-lg font-semibold text-slate-300">謎を選択してください:</label>
+                    <select id="riddleSelector" name="riddleSelector" class="w-full p-3 bg-slate-800 border border-slate-600 text-slate-200 rounded-lg focus:ring-2 focus:ring-secondary-brand focus:border-secondary-brand transition duration-150 ease-in-out">
+                        <option value="1">謎1</option>
+                        <option value="2">謎2</option>
+                        <option value="3">謎3</option>
+                        <option value="4">謎4</option>
+                        <option value="5">謎5</option>
+                        <option value="6">謎6</option>
+                        <option value="7">謎7</option>
+                    </select>
+                </div>
+
+                <div id="riddleDisplay" class="my-6 p-4 bg-slate-800/50 border border-slate-700 rounded-lg min-h-[200px] md:min-h-[300px] flex items-center justify-center">
+                    <p class="text-slate-400 italic">ここに選択された謎の画像が表示されます。</p>
+                </div>
+
+                <form id="riddleForm">
+                    <div>
+                        <label for="answer" class="block mb-2 text-lg font-semibold text-slate-300">答えを入力：</label>
+                        <input type="text" id="answer" name="answer" autocomplete="off" required
+                               class="w-full p-3 bg-slate-800 border border-slate-600 text-slate-200 rounded-lg focus:ring-2 focus:ring-secondary-brand focus:border-secondary-brand transition duration-150 ease-in-out placeholder-slate-500"
+                               placeholder="答えをどうぞ">
+                    </div>
+                    <button type="submit"
+                            class="mt-8 w-full bg-button-brand hover:bg-button-brand-dark text-button-text font-bold py-3 px-6 rounded-lg text-lg btn-custom transition duration-150 ease-in-out">
+                        判定する
+                    </button>
+                </form>
+
+                <div id="result" class="mt-6 p-4 rounded-lg text-center font-semibold text-lg">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-black pt-8 pb-8 text-center">
+        <hr class="border-t-1 border-blue-600 mb-8 w-full max-w-screen-xl mx-auto">
+        <div class="container mx-auto px-6">
+            <p class="text-slate-400">© 2025 謎解きサークル UNL:OCK. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 各謎の画像URL (GitHub Pagesリポジトリ内のパス)
+        const riddleDetails = {
+            "1": { imageUrl: "./images/q1.png", altText: "謎1の問題画像" },
+            "2": { imageUrl: "./images/q2.png", altText: "謎2の問題画像" },
+            "3": { imageUrl: "./images/q3.png", altText: "謎3の問題画像" },
+            "4": { imageUrl: "./images/q4.png", altText: "謎4の問題画像" },
+            "5": { imageUrl: "./images/q5.png", altText: "謎5の問題画像" },
+            "6": { imageUrl: "./images/q6.png", altText: "謎6の問題画像" },
+            "7": { imageUrl: "./images/q7.png", altText: "謎7の問題画像" }
+        };
+
+        const riddleSelector = document.getElementById('riddleSelector');
+        const riddleDisplayDiv = document.getElementById('riddleDisplay');
+        const riddleForm = document.getElementById('riddleForm');
+        const answerInput = document.getElementById('answer');
+        const resultDiv = document.getElementById('result');
+
+        // ★★★ Cloud FunctionのトリガーURLを設定してください ★★★
+        const cloudFunctionUrl = 'https://is-unlock-374604002302.asia-northeast1.run.app'; // 例: https://your-region-your-project.cloudfunctions.net/your-function-name
+
+        function displayRiddleImage() {
+            const selectedRiddleId = riddleSelector.value;
+            const riddleData = riddleDetails[selectedRiddleId];
+            answerInput.value = ''; // 謎を変えたら入力欄をクリア
+            resultDiv.textContent = ''; // 結果表示をクリア
+            resultDiv.className = 'mt-6 p-4 rounded-lg text-center font-semibold text-lg'; // 結果表示のスタイルをリセット
+
+            if (riddleData && riddleData.imageUrl) {
+                riddleDisplayDiv.innerHTML = `<img src="${riddleData.imageUrl}" alt="${riddleData.altText || '謎の問題画像'}">`;
+            } else {
+                riddleDisplayDiv.innerHTML = '<p class="text-slate-400 italic">問題の画像が見つかりません。謎を選択し直してください。</p>';
+            }
+        }
+
+        riddleSelector.addEventListener('change', displayRiddleImage);
+
+        riddleForm.addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const selectedRiddleId = riddleSelector.value;
+            const userAnswer = answerInput.value.trim();
+
+            if (!userAnswer) {
+                resultDiv.textContent = '答えを入力してください。';
+                resultDiv.className = 'mt-6 p-4 rounded-lg text-center font-semibold text-lg error';
+                return;
+            }
+            if (!cloudFunctionUrl || cloudFunctionUrl === 'YOUR_CLOUD_FUNCTION_TRIGGER_URL') {
+                resultDiv.textContent = 'エラー: Cloud FunctionのURLが設定されていません。管理者にお問い合わせください。';
+                resultDiv.className = 'mt-6 p-4 rounded-lg text-center font-semibold text-lg error';
+                console.error("Cloud Function URL is not set.");
+                return;
+            }
+
+            resultDiv.textContent = '判定中...';
+            resultDiv.className = 'mt-6 p-4 rounded-lg text-center font-semibold text-lg loading';
+
+            try {
+                const response = await fetch(cloudFunctionUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        riddle_id: selectedRiddleId,
+                        answer: userAnswer
+                    }),
+                });
+
+                if (!response.ok) {
+                    let errorMsg = `サーバーエラーが発生しました (ステータス: ${response.status})。`;
+                    try {
+                         const errorData = await response.json();
+                         errorMsg = errorData.error || `サーバーエラー: ${response.statusText}. 問題が解決しない場合は管理者にお問い合わせください。`;
+                    } catch(e) { /* JSONパース失敗時はデフォルトメッセージ */ }
+                    throw new Error(errorMsg);
+                }
+
+                const data = await response.json();
+                resultDiv.textContent = data.result;
+                if (data.is_correct) {
+                    resultDiv.className = 'mt-6 p-4 rounded-lg text-center font-semibold text-lg correct';
+                } else {
+                    resultDiv.className = 'mt-6 p-4 rounded-lg text-center font-semibold text-lg incorrect';
+                }
+
+            } catch (error) {
+                console.error('Error calling Cloud Function:', error);
+                resultDiv.textContent = `エラー: ${error.message}`;
+                resultDiv.className = 'mt-6 p-4 rounded-lg text-center font-semibold text-lg error';
+            }
+        });
+
+        // 初期表示
+        displayRiddleImage();
+
+        // モバイルメニュー用のスクリプト (index.htmlからコピー＆調整)
+        (function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // モバイルメニュー内のリンククリックでメニューを閉じる
+            // このページではページ内スクロールは主ではないため、単純に閉じる処理に
+            document.querySelectorAll('#mobile-menu a').forEach(anchor => {
+                anchor.addEventListener('click', function () {
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

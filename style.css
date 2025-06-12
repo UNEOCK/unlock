@@ -5,7 +5,7 @@ body {
     color: #a0aec0; /* 基本の文字色 */
 }
 .hero-bg {
-    background-image: url('https://placehold.co/1200x600/000000/3b82f6?text=UNLOCK'); /* 仮の背景画像 (黒背景に青アクセント) */
+    /*background-image: url('https://placehold.co/1200x600/000000/3b82f6?text=UNLOCK'); */
     background-size: cover;
     background-position: center;
 }
